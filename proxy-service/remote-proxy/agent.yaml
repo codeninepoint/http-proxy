@@ -1,0 +1,28 @@
+# Piko Agent Configuration
+# ========================
+# This configuration connects an upstream service to the Piko server
+
+# The Piko server URL (upstream port)
+# Replace with your server's public IP or domain
+server:
+  # url: "https://example:8001"
+  # url: "http://example:8001"
+  url: "http://<piko-server-ip>:8001"
+  # For testing without TLS on upstream:
+  # url: "http://<server-ip>:8001"
+
+# Endpoint ID - this identifies your service
+# Clients will connect using this endpoint ID in the x-piko-endpoint header
+endpoints:
+  - id: "<remote-site-proxy-id>" # This is the endpoint ID for the remote site proxy
+    # Address of your local service to forward traffic to
+    addr: "http://<remote-site-proxy-ip>:<remote-site-proxy-port>"
+
+# Authentication - JWT signed with RSA private key
+# auth:
+  # Path to the RSA private key (must match server's public key)
+  # rsa_private_key: <directory>/piko/jwt-private.pem
+
+# Logging
+log:
+  level: info
